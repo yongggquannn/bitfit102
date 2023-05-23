@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "708089436508",
+    "project_id": "bitfit102",
+    "storage_bucket": "bitfit102.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708089436508:android:5928545468347f8550c999",
+        "android_client_info": {
+          "package_name": "com.example.bitfit102"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708089436508-eeuq51q3hkcc2bde0gkou00mp942olsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgT0w9jtIA1ij0yGai7SUu2VGvbFyX2IQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708089436508-eeuq51q3hkcc2bde0gkou00mp942olsq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "708089436508-3uos1efnk8j3489ec92d70n2l8k3jg0h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bitfit102"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
