@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>708089436508-t769ag5f9k6tb39modkb4qjnhvt6pebu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.708089436508-t769ag5f9k6tb39modkb4qjnhvt6pebu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZJWPgKg8udpsJAX1DqsNiTvoamygOw_M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>708089436508</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.bitfit102.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>bitfit102</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bitfit102.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:708089436508:ios:5eb6510032d8aca350c999</string>
+</dict>
+</plist>
