@@ -7,33 +7,54 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[400],
-      appBar: AppBar(
-        backgroundColor: Colors.blue[200],
-        elevation: 0.0,
-        title: const Text("Sign in to bitFit102"),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child:TextButton(
-          child: Text("Sign in anonymously"),
-          onPressed: () async {
-            dynamic result = await _auth.signInAnon();
-            if (result == null) {
-              print("error signing in");
-            } else {
-              print("signed in");
-              print(result);
-            }
-          }
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.blue[200],
+          elevation: 0.0,
+          title: const Text("Welcome to bitFit102"),
+        ),
+        body: Column(
+          children: [
+            Container(
+                padding: const EdgeInsets.symmetric(vertical: 150.0, horizontal: 150.0),
+                child: ElevatedButton(
+                    child: Text(
+                      "Sign in anonymously",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () async {
+                      dynamic result = await _auth.signInAnon();
+                      if (result == null) {
+                        print("error signing in");
+                      } else {
+                        print("signed in");
+                        print(result);
+                      }
+                    }
+                  )
+                ),
+            Expanded(
+              child: Container(
+                child: Align(
+                  alignment: Alignment.center,
+                child: Image(
+              image: AssetImage(
+                  "assets/premium_photo-1669021454207-b4af6335dc90.avif"),
+                )
+              ),
+            ),
+            ),
+          ],
         )
-      )
-    );
+      );
   }
 }
