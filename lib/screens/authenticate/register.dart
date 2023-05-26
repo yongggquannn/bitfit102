@@ -1,16 +1,16 @@
 import "package:bitfit102/screens/services/auth.dart";
 import "package:flutter/material.dart";
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  const SignIn({ required this.toggleView }); 
+  const Register({ required this.toggleView });
 
   @override
-  _SignInState createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
 
@@ -25,11 +25,11 @@ class _SignInState extends State<SignIn> {
         appBar: AppBar(
           backgroundColor: Colors.blue[400],
           elevation: 0.0,
-          title: const Text("Welcome to bitFit102"),
+          title: const Text("Sign up to bitFit102"),
           actions: <Widget>[
             TextButton.icon(
               icon: Icon(Icons.person),
-              label: Text("Register", style: TextStyle(color: Colors.black)),
+              label: Text("Sign In", style: TextStyle(color: Colors.black)),
               onPressed: () {
                 widget.toggleView();
               }
@@ -49,7 +49,7 @@ class _SignInState extends State<SignIn> {
                           setState(() => email = val);
                         }
                       ),
-                      SizedBox(height:  20.0),
+                      SizedBox(height: 20.0),
                       TextFormField(
                         obscureText: true,
                         onChanged: (val) {
@@ -62,7 +62,7 @@ class _SignInState extends State<SignIn> {
                           primary: Colors.pink[400],
                         ),
                         child: Text(
-                          "Sign in",
+                          "Register",
                           style: TextStyle(color: Colors.black),
                         ),
                         onPressed: () async {

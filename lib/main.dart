@@ -1,10 +1,10 @@
-import 'package:bitfit102/models/myuser.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart';
 import 'firebase_options.dart';
+import "package:provider/provider.dart";
+import "package:bitfit102/models/myuser.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,12 +21,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<MyUser?>.value(
-      initialData: null,
       value: AuthService().user,
+      initialData: null,
       child: const MaterialApp(
-      home: Wrapper(),
+        home: Wrapper(),
       ),
     );
   }
 
 }
+
