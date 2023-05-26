@@ -23,8 +23,8 @@ class _SignInState extends State<SignIn> {
             Container(
                 padding: const EdgeInsets.symmetric(vertical: 150.0, horizontal: 150.0),
                 child: ElevatedButton(
-                    child: Text(
-                      "Sign in anonymously",
+                    child: const Text(
+                      "Sign in as Guest",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
@@ -42,16 +42,14 @@ class _SignInState extends State<SignIn> {
                     }
                   )
                 ),
-            Expanded(
-              child: Container(
+            const Expanded(
                 child: Align(
-                  alignment: Alignment.center,
+                alignment: Alignment.center,
                 child: Image(
-              image: AssetImage(
+                image: AssetImage(
                   "assets/premium_photo-1669021454207-b4af6335dc90.avif"),
                 )
               ),
-            ),
             ),
           ],
         )
