@@ -1,4 +1,5 @@
 import 'package:bitfit102/screens/services/auth.dart';
+import 'package:bitfit102/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -47,8 +48,9 @@ class _SignInState extends State<SignIn> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 20.0, width: 400),
                   TextFormField(
+                    decoration: textInputDecoration,
                     validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                     onChanged: (val) {
                       setState(() => email = val);
@@ -56,6 +58,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   SizedBox(height: 20.0),
                   TextFormField(
+                    decoration: passwordInputDecoration,
                     validator: (val) => val!.length < 6 ? 'Enter a password 6+ chars long' : null,
                     obscureText: true,
                     onChanged: (val) {
@@ -75,7 +78,7 @@ class _SignInState extends State<SignIn> {
                       if (_formKey.currentState!.validate()) {
                         dynamic result = await _auth.signInWithEmailAndPassword(email, password);
                         if (result == null) {
-                          setState(() => error = 'Invalid credentials');
+                          setState(() => error = 'Invalid credentials, please try again');
                         }
                       }
                     },
@@ -89,15 +92,7 @@ class _SignInState extends State<SignIn> {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                'assets/premium_photo-1669021454207-b4af6335dc90.avif',
-              ),
-            ),
-          ),
+          
         ],
       ),
     );
