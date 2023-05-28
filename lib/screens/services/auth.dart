@@ -47,6 +47,12 @@ class AuthService {
       User? user = result.user;
       return _userFromFirebaseUser(user!);
     } catch(e) {
+      if (e is FirebaseAuthException) {
+        if (e.code == 'email-already-in-use') {
+          // Handle the scenario where the email already exists
+          throw Exception('The email address is already in use. Please use a different email.');
+        }
+      }
       print(e.toString());
       return null;
     }

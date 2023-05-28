@@ -15,14 +15,24 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.blue[400],
         elevation: 0.0,
         actions: <Widget>[
-          TextButton.icon(
-            icon: const Icon(Icons.person),
-            label: const Text("Logout"),
+          Container(
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(10),
+      ),
+        child: TextButton.icon(
+            icon: const Icon(Icons.person, color: Colors.black),
+            label: const Text("Logout",
+              style: TextStyle(color: Colors.black)
+            ),
             onPressed: () async {
               await _auth.signOut();
-            })
-        ],
-      ),
-    );
-  }
+            }
+          ),
+        ),
+      ],
+    ),
+  );
+}
 }
