@@ -30,26 +30,33 @@ class _RegisterState extends State<Register> {
           elevation: 0.0,
           title: const Text("Sign up to bitFit102"),
           actions: <Widget>[
-            TextButton.icon(
+            Container(
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(10),
+      ),
+        child: TextButton.icon(
               icon: Icon(Icons.person, color: Colors.black),
               label: Text("Sign In", style: TextStyle(color: Colors.black)),
               onPressed: () {
                 widget.toggleView();
-              }
-            )
-          ],
-        ),
+              },
+            ),
+          ),
+        ],
+      ),
         body: ListView(
           children: [
             Container(
-                padding: const EdgeInsets.symmetric(vertical: 150.0, horizontal: 150.0),
+                padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 20.0),
                       TextFormField(
-                        decoration: textInputDecoration,
+                        decoration: textInputDecoration.copyWith(hintText: "Email"),
                         validator: (val) => val!.isEmpty ? "Enter an email" : null,
                         onChanged: (val) {
                           setState(() => email = val);
@@ -57,7 +64,7 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: 20.0),
                       TextFormField(
-                        decoration: passwordInputDecoration,
+                        decoration: textInputDecoration.copyWith(hintText: "Password"),
                         obscureText: true,
                         validator: (val) => val!.length < 6 ? "Enter a password 6+ chars long" : null,
                         onChanged: (val) {
@@ -76,10 +83,11 @@ class _RegisterState extends State<Register> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                            if (result == null) {
-                              setState(() => error = "Please enter a valid email");
+                            if( result == null) {
+                              setState(() => error = 'Please enter a valid email');
                             }
                           }
+                          
                         }
                       ),
                       SizedBox(height: 12.0), 
@@ -91,8 +99,15 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
               ),
-          ],
-        )
-      );
+            const SizedBox(height: 20.0), // Add some spacing
+          Image.asset(
+            'assets/photo-1517963879433-6ad2b056d712.avif',
+            fit: BoxFit.contain,
+            width: 400,
+            height: 400,
+          ), 
+        ],
+       )
+    );
   }
 }
