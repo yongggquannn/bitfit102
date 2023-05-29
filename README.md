@@ -104,16 +104,16 @@ some people want to train both running and strength concurrently.
 
 The **technical proof** is as shown below
 
-<img src="assets/bitfithome.png" alt="alternate-text">
+<img src="assets/bitfithome.png" width="225" height="450">
 
 
 <a name="br4"></a>**NUS Orbital 2023 - Milestone 1**
 
 
-<img src="assets/bitfitregister.png" alt="alternate-text">
+<img src="assets/bitfitregister.png" width="225" height="450">
 
 
 <a name="br5"></a>**NUS Orbital 2023 - Milestone 1**
 
 
-<img src="assets/bitfitsignin.png" alt="alternate-text">
+<img src="assets/bitfitsignin.png" width="225" height="450">
