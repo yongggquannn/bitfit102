@@ -5,7 +5,7 @@ import "package:bitfit102/shared/loading.dart";
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
-  const SignIn({required this.toggleView});
+  const SignIn({super.key, required this.toggleView});
 
   @override
   _SignInState createState() => _SignInState();
@@ -23,7 +23,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : Scaffold(
+    return loading ? const Loading() : Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
@@ -31,14 +31,14 @@ class _SignInState extends State<SignIn> {
         title: const Text('Welcome to bitFit102'),
         actions: <Widget>[
           Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
       ),
         child: TextButton.icon(
-            icon: Icon(Icons.person, color: Colors.black),
-            label: Text(
+            icon: const Icon(Icons.person, color: Colors.black),
+            label: const Text(
               'Register',
               style: TextStyle(color: Colors.black),
             ),
@@ -57,7 +57,7 @@ class _SignInState extends State<SignIn> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 20.0, width: 400),
+                  const SizedBox(height: 20.0, width: 400),
                   TextFormField(
                     decoration: textInputDecoration.copyWith(hintText: "Email"),
                     validator: (val) => val!.isEmpty ? 'Enter an email' : null,
@@ -65,7 +65,7 @@ class _SignInState extends State<SignIn> {
                       setState(() => email = val);
                     },
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   TextFormField(
                     decoration: textInputDecoration.copyWith(hintText: "Password"),
                     validator: (val) => val!.length < 6 ? 'Enter a password 6+ chars long' : null,
@@ -74,12 +74,12 @@ class _SignInState extends State<SignIn> {
                       setState(() => password = val);
                     },
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.pink[400],
+                      backgroundColor: Colors.pink[400],
                     ),
-                    child: Text(
+                    child: const Text(
                       'Sign in',
                       style: TextStyle(color: Colors.black),
                     ),
@@ -96,14 +96,14 @@ class _SignInState extends State<SignIn> {
                       }
                     },
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Text(
                     error,
-                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    style: const TextStyle(color: Colors.red, fontSize: 14.0),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   TextButton(
-                    child: Text(
+                    child: const Text(
                       'Sign in as guest',
                       style: TextStyle(color: Colors.blue),
                     ),

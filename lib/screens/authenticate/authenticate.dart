@@ -3,6 +3,8 @@ import "package:flutter/material.dart";
 import "package:bitfit102/screens/authenticate/register.dart";
 
 class Authenticate extends StatefulWidget {
+  const Authenticate({super.key});
+
 
   @override
   State<Authenticate> createState() => _AuthenticateState();
