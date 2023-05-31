@@ -1,4 +1,4 @@
-<a name="br1"></a>**NUS Orbital 2023 - Milestone 1**
+<h1>NUS Orbital 2023 - Milestone 1</h1>
 
 **Proposed Level of Achievement:**
 
@@ -56,9 +56,6 @@ Features to be completed by the mid of July:
 
 1\. Workout Log 
 
-
-<a name="br2"></a>**NUS Orbital 2020 - Milestone 1**
-
 a. Users are able to keep track of their previous workouts.
 
 2\. Profile Page
@@ -96,9 +93,15 @@ some people want to train both running and strength concurrently.
 **3rd week of July:** Testing and debugging
 
 
+**User Guide**
 
+<a href="https://drive.google.com/file/d/1J22HmkD2zGDA-fFhELvwZzgpn3XaJ1s6/view?usp=drive_link"> Click here for APK </a>
 
-<a name="br3"></a>**NUS Orbital 2023 - Milestone 1**
+This is the link to our APK. To open the application, use supported web browsers (Chrome, Firefox or Safari), and make sure there is a stable internet connection.
+
+Setting up:
+Press the link from the provided URL. You can install the apk inside the phone in your browser. You can create an account through the sign up page if you don't have an account. If you have created an account previously, log in using your email and password. If you want to sign in as a guest to try out the features, you have the option to do so (Your data will not be stored). Note that we have yet to implement the option to change your password. 
+
 
 **Mockup**
 
@@ -107,13 +110,7 @@ The **technical proof** is as shown below
 <img src="assets/bitfithome.png" width="225" height="450">
 
 
-<a name="br4"></a>**NUS Orbital 2023 - Milestone 1**
-
-
 <img src="assets/bitfitregister.png" width="225" height="450">
-
-
-<a name="br5"></a>**NUS Orbital 2023 - Milestone 1**
 
 
 <img src="assets/bitfitsignin.png" width="225" height="450">
