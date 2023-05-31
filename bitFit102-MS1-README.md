@@ -116,10 +116,11 @@ For android devices, you may encounter Google Play Protect Unsafe app blocked. C
 
 The **technical proof** is as shown below
 
-<img src="assets/bitfithome.png" width="225" height="450">
+<img src="assets/bitfitupdatedhome.png" width="225" height="450">
 
 
 <img src="assets/bitfitregister.png" width="225" height="450">
 
 
 <img src="assets/bitfitsignin.png" width="225" height="450">
+
