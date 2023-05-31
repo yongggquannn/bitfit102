@@ -95,7 +95,7 @@ some people want to train both running and strength concurrently.
 
 **User Guide**
 
-<a href="https://drive.google.com/file/d/1J22HmkD2zGDA-fFhELvwZzgpn3XaJ1s6/view?usp=drive_link"> Click here for APK </a>
+<a href="https://drive.google.com/file/d/1XdNBDQc5L__D8BtHnDYelYHGu53Hi52T/view?usp=sharing"> Click here for APK </a>
 
 This is the link to our APK. To open the application, use supported web browsers (Chrome, Firefox or Safari), and make sure there is a stable internet connection.
 
