@@ -40,7 +40,7 @@ Features to be completed by the mid of June:
 
 1\. Inserting Fitness Goals
 
-a. Users will be able to select the fitness goal.
+a. Users will be able to select their fitness goals. For example, a 10km run with XX:XX time. 
 
 2\. Workout Plan
 
@@ -62,6 +62,10 @@ a. Users are able to keep track of their previous workouts.
 
 a. Users are able to see their current fitness level and identity within this page
 
+3\. Resources Page
+
+a. Users will be able to access recommended videos and guides for them to see how the some of the workouts are done. These videos can be filtered based on the workouts selected.
+
 **Tech Stack**
 
 1\. Flutter + Dart
@@ -76,7 +80,11 @@ a. Users are able to see their current fitness level and identity within this pa
 
 strength training, to IPPT goals. We incorporate these training plans as 
 
-some people want to train both running and strength concurrently. 
+some people want to train both running and strength concurrently. The training plans are 
+
+detailed and spread out over a number of weeks. For example, in the case of a running plan, we 
+
+have a 6-week plan for 21km(Half Marathon) with a target time of 2 Hr 30 Mins. 
 
 
 **Development Plan**
@@ -89,18 +97,19 @@ some people want to train both running and strength concurrently.
 **3rd week of June:** Continue with homepage (Adding explore workout plans into homepage)
 **4th week of June:** Testing and debugging
 **1st week of July:** Implementation of peer teams’ suggestions
-**2nd week of July:** Implement additional capabilities – Workout log 
+**2nd week of July:** Implement additional capabilities – Workout log , Resources
 **3rd week of July:** Testing and debugging
 
 
 **User Guide**
 
-<a href="https://drive.google.com/file/d/1J22HmkD2zGDA-fFhELvwZzgpn3XaJ1s6/view?usp=drive_link"> Click here for APK </a>
+<a href="https://drive.google.com/file/d/1J22HmkD2zGDA-fFhELvwZzgpn3XaJ1s6/view?usp=sharing"> Click here for APK </a>
 
 This is the link to our APK. To open the application, use supported web browsers (Chrome, Firefox or Safari), and make sure there is a stable internet connection.
 
 Setting up:
-Press the link from the provided URL. You can install the apk inside the phone in your browser. You can create an account through the sign up page if you don't have an account. If you have created an account previously, log in using your email and password. If you want to sign in as a guest to try out the features, you have the option to do so (Your data will not be stored). Note that we have yet to implement the option to change your password. 
+Press the link from the provided URL. You can install the apk inside the phone in your browser. 
+For android devices, you may encounter Google Play Protect Unsafe app blocked. Click install anyway. You can create an account through the sign up page if you don't have an account. If you have created an account previously, log in using your email and password. If you want to sign in as a guest to try out the features, you have the option to do so (Your data will not be stored). Note that we have yet to implement the option to change your password. 
 
 
 **Mockup**
