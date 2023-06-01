@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
           elevation: 0.0,
           actions: <Widget>[
             Container(
-        margin: EdgeInsets.symmetric(horizontal: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(10),
@@ -114,7 +114,7 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          ProfileList(),
+          const ProfileList(),
         ],
       ),
       ),
