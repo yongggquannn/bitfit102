@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:bitfit102/home/home.dart";
 
 class WorkoutSelection extends StatefulWidget {
   const WorkoutSelection({super.key});
@@ -66,6 +67,10 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 if (selectedGoal != null) {
                   print('Selected goal: $selectedGoal');
                   // Add your logic here based on the selected goal
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                  );
                 } else {
                   print('Please select a goal');
                 }

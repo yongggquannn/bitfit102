@@ -3,6 +3,7 @@ import 'package:bitfit102/shared/constants.dart';
 import 'package:flutter/material.dart';
 import "package:bitfit102/shared/loading.dart";
 import "package:bitfit102/screens/authenticate/forgot_pw_page.dart";
+import "package:bitfit102/home/workout_selection.dart";
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -93,6 +94,13 @@ Widget build(BuildContext context) {
                           error = 'Invalid credentials, please try again';
                           loading = false;
                         });
+                      } else {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => WorkoutSelection(),
+                          )
+                        );
                       }
                     }
                   },
