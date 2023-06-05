@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import "package:bitfit102/home/home.dart";
 
 class WorkoutSelection extends StatefulWidget {
-  const WorkoutSelection({super.key});
+  const WorkoutSelection({super.key, Key? keyworkoutSelection});
 
   @override
   _WorkoutSelectionState createState() => _WorkoutSelectionState();
@@ -22,45 +22,39 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'What are your goals?',
+              'What is your goal?',
               style: TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 20),
-            ListTile(
+            RadioListTile(
               title: const Text('Train for a race'),
-              leading: Radio(
-                value: 'Train for a race',
-                groupValue: selectedGoal,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGoal = "";
-                  });
-                },
-              ),
+              value: 'Train for a race',
+              groupValue: selectedGoal,
+              onChanged: (value) {
+                setState(() {
+                  selectedGoal = value;
+                });
+              },
             ),
-            ListTile(
+            RadioListTile(
               title: const Text('Improve lifting strength'),
-              leading: Radio(
-                value: 'Improve lifting strength',
-                groupValue: selectedGoal,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGoal = "";
-                  });
-                },
-              ),
+              value: 'Improve lifting strength',
+              groupValue: selectedGoal,
+              onChanged: (value) {
+                setState(() {
+                  selectedGoal = value;
+                });
+              },
             ),
-            ListTile(
+            RadioListTile(
               title: const Text('I want to train both running and lifting'),
-              leading: Radio(
-                value: 'I want to train both running and lifting',
-                groupValue: selectedGoal,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGoal = "";
-                  });
-                },
-              ),
+              value: 'I want to train both running and lifting',
+              groupValue: selectedGoal,
+              onChanged: (value) {
+                setState(() {
+                  selectedGoal = value;
+                });
+              },
             ),
             ElevatedButton(
               onPressed: () {
@@ -69,7 +63,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                   // Add your logic here based on the selected goal
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => Home()),
+                    MaterialPageRoute(builder: (context) => const Home()),
                   );
                 } else {
                   print('Please select a goal');
@@ -83,6 +77,8 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
     );
   }
 }
+
+
 
 void main() {
   runApp(const MaterialApp(

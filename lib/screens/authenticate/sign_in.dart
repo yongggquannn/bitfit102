@@ -98,7 +98,7 @@ Widget build(BuildContext context) {
                         Navigator.push(
                           context, 
                           MaterialPageRoute(
-                            builder: (context) => WorkoutSelection(),
+                            builder: (context) => const WorkoutSelection(),
                           )
                         );
                       }
@@ -123,7 +123,7 @@ Widget build(BuildContext context) {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ForgotPasswordPage();
+                              return const ForgotPasswordPage();
                             },
                           ),
                         );
