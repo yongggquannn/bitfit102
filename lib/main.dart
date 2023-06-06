@@ -1,4 +1,5 @@
 import 'package:bitfit102/screens/services/auth.dart';
+import 'package:bitfit102/selection/running.dart';
 import 'package:bitfit102/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

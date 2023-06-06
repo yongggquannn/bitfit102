@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import "package:bitfit102/selection/running.dart";
+import 'package:provider/provider.dart';
+import 'package:bitfit102/screens/services/auth.dart';
 
 class WorkoutSelection extends StatefulWidget {
   const WorkoutSelection({super.key});
@@ -62,16 +65,34 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                if (selectedGoal != null) {
-                  print('Selected goal: $selectedGoal');
-                  // Add your logic here based on the selected goal
-                } else {
-                  print('Please select a goal');
-                }
-              },
-              child: const Text('Submit'),
-            ),
+  onPressed: () async {
+    if (selectedGoal != null) {
+      print('Selected goal: $selectedGoal');
+      // Retrieve the AuthService using Provider
+      final authService = Provider.of<AuthService>(context, listen: false);
+
+      // Retrieve the current user
+      final user = await authService.getCurrentUser();
+
+      if (user != null) {
+        final uid = user.uid;
+        // Add your logic here based on the selected goal
+        if (selectedGoal == 'Train for a race') {
+          Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RunningPage(),
+      ),
+    );
+        }
+      }
+    } else {
+      print('Please select a goal');
+    }
+  },
+  child: const Text('Submit'),
+),
+
           ],
         ),
       ),
