@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import "package:bitfit102/selection/running.dart";
-import 'package:provider/provider.dart';
 import 'package:bitfit102/screens/services/auth.dart';
+import 'package:bitfit102/selection/running.dart';
 
 class WorkoutSelection extends StatefulWidget {
-  const WorkoutSelection({super.key});
+  const WorkoutSelection({Key? key}) : super(key: key);
 
   @override
   _WorkoutSelectionState createState() => _WorkoutSelectionState();
@@ -12,6 +11,9 @@ class WorkoutSelection extends StatefulWidget {
 
 class _WorkoutSelectionState extends State<WorkoutSelection> {
   String? selectedGoal;
+
+  // Create an instance of AuthService
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = "";
+                    selectedGoal = value as String?;
                   });
                 },
               ),
@@ -47,7 +49,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = "";
+                    selectedGoal = value as String?;
                   });
                 },
               ),
@@ -59,40 +61,32 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = "";
+                    selectedGoal = value as String?;
                   });
                 },
               ),
             ),
             ElevatedButton(
-  onPressed: () async {
-    if (selectedGoal != null) {
-      print('Selected goal: $selectedGoal');
-      // Retrieve the AuthService using Provider
-      final authService = Provider.of<AuthService>(context, listen: false);
-
-      // Retrieve the current user
-      final user = await authService.getCurrentUser();
-
-      if (user != null) {
-        final uid = user.uid;
-        // Add your logic here based on the selected goal
-        if (selectedGoal == 'Train for a race') {
-          Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RunningPage(),
-      ),
-    );
-        }
-      }
-    } else {
-      print('Please select a goal');
-    }
-  },
-  child: const Text('Submit'),
-),
-
+              onPressed: () async {
+                if (selectedGoal != null) {
+                  final String? userId = await authService.getCurrentUserId();
+                  if (userId != null) {
+                    print('Selected goal: $selectedGoal');
+                    if (selectedGoal == 'Train for a race') {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RunningPage(userId: userId),
+                        ),
+                      );
+                    }
+                  }
+                } else {
+                  print('Please select a goal');
+                }
+              },
+              child: const Text('Submit'),
+            ),
           ],
         ),
       ),
@@ -101,7 +95,9 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
 }
 
 void main() {
-  runApp(const MaterialApp(
-    home: WorkoutSelection(),
-  ));
+  runApp(
+    MaterialApp(
+      home: WorkoutSelection(),
+    ),
+  );
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import "package:bitfit102/screens/services/database.dart";
+import 'package:bitfit102/screens/services/database.dart';
+import 'package:bitfit102/shared/constants.dart';
+import 'package:bitfit102/home/home.dart';
 
 class RunningPage extends StatefulWidget {
-  //final String userId;
+  final String userId;
 
-  const RunningPage({super.key });
+  const RunningPage({required this.userId});
 
   @override
   _RunningPageState createState() => _RunningPageState();
@@ -12,14 +14,13 @@ class RunningPage extends StatefulWidget {
 
 class _RunningPageState extends State<RunningPage> {
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController fitnessLevelController = TextEditingController();
-  final TextEditingController targetDistanceController = TextEditingController();
+  String fitnessLevel = 'Beginner'; // Default value
+  String targetDistance = '2.4km'; // Default value
+  bool isNameEmpty = false; // Track whether the name field is empty
 
   @override
   void dispose() {
     nameController.dispose();
-    fitnessLevelController.dispose();
-    targetDistanceController.dispose();
     super.dispose();
   }
 
@@ -34,50 +35,99 @@ class _RunningPageState extends State<RunningPage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              TextField(
+              TextFormField(
                 controller: nameController,
-                decoration: const InputDecoration(labelText: 'Name'),
+                decoration: textInputDecoration.copyWith(labelText: 'Name'),
+                maxLength: 20, // Set maximum character limit
               ),
-              TextField(
-                controller: fitnessLevelController,
-                decoration: const InputDecoration(labelText: 'Fitness Level'),
+              if (isNameEmpty) // Display an error message if the name is empty
+                const Text(
+                  'Please enter your name',
+                  style: TextStyle(color: Colors.red),
+                ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: fitnessLevel,
+                onChanged: (value) {
+                  setState(() {
+                    fitnessLevel = value!;
+                  });
+                },
+                items: <DropdownMenuItem<String>>[
+                  DropdownMenuItem<String>(
+                    value: 'Beginner',
+                    child: const Text('Beginner'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: 'Intermediate',
+                    child: const Text('Intermediate'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: 'Advanced',
+                    child: const Text('Advanced'),
+                  ),
+                ],
+                decoration: textInputDecoration.copyWith(labelText: 'Fitness Level'),
               ),
-              TextField(
-                controller: targetDistanceController,
-                decoration: const InputDecoration(labelText: 'Target Distance'),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: targetDistance,
+                onChanged: (value) {
+                  setState(() {
+                    targetDistance = value!;
+                  });
+                },
+                items: <DropdownMenuItem<String>>[
+                  DropdownMenuItem<String>(
+                    value: '2.4km',
+                    child: const Text('2.4km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '5km',
+                    child: const Text('5km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '10km',
+                    child: const Text('10km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '21km',
+                    child: const Text('21km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '42km',
+                    child: const Text('42km'),
+                  ),
+                ],
+                decoration: textInputDecoration.copyWith(labelText: 'Target Distance'),
               ),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  String name = nameController.text;
-                  String fitnessLevel = fitnessLevelController.text;
-                  String targetDistance = targetDistanceController.text;
-/*
-                  if (name.isNotEmpty &&
-                      fitnessLevel.isNotEmpty &&
-                      targetDistance.isNotEmpty) {
-                    // Save the details to Firestore using the DatabaseService
-                    DatabaseService(uid: widget.userId)
-                        .updateUserData(name, fitnessLevel, targetDistance);
+                  String name = nameController.text.trim();
 
-                    // Navigate back to the previous screen
-                    Navigator.pop(context);
+                  if (name.isEmpty) {
+                    setState(() {
+                      isNameEmpty = true;
+                    });
                   } else {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Error'),
-                        content: const Text('Please enter all fields'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
+                    setState(() {
+                      isNameEmpty = false;
+                    });
+
+                    DatabaseService(uid: widget.userId).updateUserData(
+                      name,
+                      fitnessLevel,
+                      targetDistance,
                     );
-                  } */
+
+                    Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(), 
+                    ),
+                  );
+                  }
                 },
                 child: const Text('Save'),
               ),
@@ -88,3 +138,4 @@ class _RunningPageState extends State<RunningPage> {
     );
   }
 }
+

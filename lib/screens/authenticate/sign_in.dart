@@ -3,7 +3,7 @@ import 'package:bitfit102/shared/constants.dart';
 import 'package:flutter/material.dart';
 import "package:bitfit102/shared/loading.dart";
 import "package:bitfit102/screens/authenticate/forgot_pw_page.dart";
-import "package:bitfit102/home/workout_selection.dart";
+import "package:bitfit102/workout_selection/workout_selection.dart";
 
 class SignIn extends StatefulWidget {
   final Function toggleView;

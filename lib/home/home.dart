@@ -5,6 +5,7 @@ import "package:provider/provider.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:bitfit102/home/profile_list.dart";
 
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -67,6 +68,7 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () async {
                 await _auth.signOut();
+                
               },
             ),
           ),

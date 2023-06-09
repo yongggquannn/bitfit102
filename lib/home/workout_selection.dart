@@ -1,5 +1,7 @@
+import 'package:bitfit102/selection/running.dart';
 import 'package:flutter/material.dart';
 import "package:bitfit102/home/home.dart";
+import "package:bitfit102/selection/running.dart";
 
 class WorkoutSelection extends StatefulWidget {
   const WorkoutSelection({super.key, Key? keyworkoutSelection});
