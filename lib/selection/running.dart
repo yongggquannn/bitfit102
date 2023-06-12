@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
-import 'package:bitfit102/home/home.dart';
+import "package:bitfit102/selection/run_plan.dart";
 
 class RunningPage extends StatefulWidget {
   final String userId;
@@ -121,12 +121,12 @@ class _RunningPageState extends State<RunningPage> {
                       targetDistance,
                     );
 
-                    Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(), 
-                    ),
-                  );
+                    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RunPlanPage(targetDistance: targetDistance),
+        ),
+      );
                   }
                 },
                 child: const Text('Save'),
@@ -138,4 +138,5 @@ class _RunningPageState extends State<RunningPage> {
     );
   }
 }
+
 
