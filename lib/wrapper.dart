@@ -1,6 +1,7 @@
 import "package:bitfit102/home/home.dart";
 import "package:bitfit102/models/myuser.dart";
 import "package:bitfit102/screens/authenticate/authenticate.dart";
+import "package:bitfit102/workout_selection/workout_selection.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
@@ -16,7 +17,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
-      return const Home();
+      return const WorkoutSelection();
     }
   }
 }

@@ -175,6 +175,7 @@ String getWorkoutFor42K(int day) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Run Plan'),
         actions: <Widget>[
           IconButton(

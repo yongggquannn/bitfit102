@@ -1,3 +1,4 @@
+import "package:bitfit102/screens/authenticate/sign_in.dart";
 import "package:bitfit102/screens/services/auth.dart";
 import "package:bitfit102/workout_selection/workout_selection.dart";
 import "package:flutter/material.dart";
@@ -25,6 +26,7 @@ class _RegisterState extends State<Register> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.blue[400],
           elevation: 0.0,
           title: const Text("Sign up to bitFit102"),
@@ -40,7 +42,10 @@ class _RegisterState extends State<Register> {
                 label: const Text("Sign In",
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
-                  widget.toggleView();
+                  Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => SignIn(toggleView: () {})),
+              );
                 },
               ),
             ),

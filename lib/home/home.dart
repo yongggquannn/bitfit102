@@ -1,3 +1,4 @@
+import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:flutter/material.dart';
 import "package:bitfit102/screens/services/database.dart";
@@ -6,9 +7,8 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:bitfit102/home/profile_list.dart";
 
 
-
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -50,6 +50,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('bitFit102'),
           backgroundColor: Colors.blue[400],
           elevation: 0.0,
@@ -68,7 +69,10 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () async {
                 await _auth.signOut();
-                 
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => SignIn(toggleView: () {})),
+              );
               },
             ),
           ),

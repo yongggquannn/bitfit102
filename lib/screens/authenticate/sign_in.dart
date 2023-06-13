@@ -1,3 +1,4 @@
+import 'package:bitfit102/screens/authenticate/register.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ Widget build(BuildContext context) {
   return loading ? const Loading() : Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.blue[400],
       elevation: 0.0,
       title: const Text('Welcome to bitFit102'),
@@ -45,7 +47,10 @@ Widget build(BuildContext context) {
               style: TextStyle(color: Colors.black),
             ),
             onPressed: () {
-              widget.toggleView();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Register(toggleView: () {})),
+              );
             },
           ),
         ),
