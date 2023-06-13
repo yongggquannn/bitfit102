@@ -5,17 +5,17 @@ import 'package:bitfit102/screens/authenticate/sign_in.dart';
 import 'package:table_calendar/table_calendar.dart';
 import "package:intl/intl.dart";
 
-class RunPlanPage extends StatefulWidget {
+class LiftPlanPage extends StatefulWidget {
   final String targetDistance;
   final AuthService _auth = AuthService();
 
-  RunPlanPage({super.key, required this.targetDistance});
+  LiftPlanPage({super.key, required this.targetDistance});
 
   @override
-  _RunPlanPageState createState() => _RunPlanPageState();
+  _LiftPlanPageState createState() => _LiftPlanPageState();
 }
 
-class _RunPlanPageState extends State<RunPlanPage> {
+class _LiftPlanPageState extends State<LiftPlanPage> {
   final CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
@@ -175,7 +175,7 @@ String getWorkoutFor42K(int day) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Run Plan'),
+        title: const Text('Lift Plan'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.home),

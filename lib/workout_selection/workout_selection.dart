@@ -37,7 +37,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = value as String?;
+                    selectedGoal = value;
                   });
                 },
               ),
@@ -49,7 +49,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = value as String?;
+                    selectedGoal = value;
                   });
                 },
               ),
@@ -61,7 +61,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 groupValue: selectedGoal,
                 onChanged: (value) {
                   setState(() {
-                    selectedGoal = value as String?;
+                    selectedGoal = value;
                   });
                 },
               ),
@@ -96,7 +96,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: WorkoutSelection(),
     ),
   );

@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
         children: [
           'Explore workout plans',
           'Workout History',
-          'Logout',
         ],
         isExpanded: false, // Updated: Set the initial expansion state for each item
       ),
@@ -106,16 +105,6 @@ class _HomeState extends State<Home> {
                 isExpanded: item.isExpanded,
               );
             }).toList(),
-          ),
-          const Center(
-            child: Text(
-              'Under Development',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
           ),
           const ProfileList(),
         ],
