@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
-import "package:bitfit102/selection/run_plan.dart";
+import "package:bitfit102/selection/lift_plan.dart";
 
 class LiftingPage extends StatefulWidget {
   final String userId;
@@ -20,7 +20,6 @@ class _LiftingPageState extends State<LiftingPage> {
   final TextEditingController deadliftController = TextEditingController();
   
   String fitnessLevel = 'Beginner'; // Default value
-  String targetDistance = '2.4km'; // Default value
   bool isNameEmpty = false; // Track whether the name field is empty
 
   @override
@@ -123,7 +122,9 @@ class _LiftingPageState extends State<LiftingPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RunPlanPage(targetDistance: targetDistance),
+                        builder: (context) => LiftPlanPage(benchPressTarget: benchPressTarget,
+                                                            squatTarget: squatTarget,
+                                                            deadliftTarget: deadliftTarget),
                       ),
                     );
                   }

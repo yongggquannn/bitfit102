@@ -1,4 +1,3 @@
-import "package:bitfit102/home/home.dart";
 import "package:bitfit102/models/myuser.dart";
 import "package:bitfit102/screens/authenticate/authenticate.dart";
 import "package:bitfit102/workout_selection/workout_selection.dart";

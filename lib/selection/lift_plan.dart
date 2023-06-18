@@ -6,10 +6,16 @@ import 'package:table_calendar/table_calendar.dart';
 import "package:intl/intl.dart";
 
 class LiftPlanPage extends StatefulWidget {
-  final String targetDistance;
+  final double benchPressTarget;
+  final double squatTarget;
+  final double deadliftTarget;
   final AuthService _auth = AuthService();
 
-  LiftPlanPage({super.key, required this.targetDistance});
+  LiftPlanPage({super.key, 
+    required this.benchPressTarget,
+    required this.squatTarget,
+    required this.deadliftTarget,
+  });
 
   @override
   _LiftPlanPageState createState() => _LiftPlanPageState();
@@ -22,154 +28,64 @@ class _LiftPlanPageState extends State<LiftPlanPage> {
   final DateTime _firstDay = DateTime.now().subtract(const Duration(days: 365));
   final DateTime _lastDay = DateTime.now().add(const Duration(days: 365));
   Map<DateTime, String> trainingPlan = {};
-  final int _selectedMonth = DateTime.now().month;
-  final int _selectedYear = DateTime.now().year;
 
-  @override
-  void initState() {
-    super.initState();
-    _selectedDay = DateTime.now();
-    trainingPlan = generateTrainingPlan();
-  }
+@override
+void initState() {
+  super.initState();
+  _selectedDay = DateTime.now(); // Set initial value to DateTime.now()
+  trainingPlan = generateTrainingPlan();
+}
 
-Map<DateTime, String> generateTrainingPlan() {
+
+  Map<DateTime, String> generateTrainingPlan() {
     Map<DateTime, String> trainingPlan = {};
 
     DateTime currentDate = DateTime.now();
-    DateTime startDate = currentDate.subtract(Duration(days: currentDate.weekday - DateTime.monday));
+    DateTime startDate =
+        currentDate.subtract(Duration(days: currentDate.weekday - DateTime.monday));
 
     for (int i = 0; i < 7; i++) {
       DateTime workoutDate = startDate.add(Duration(days: i));
-      trainingPlan[workoutDate] = getWorkoutForTargetDistance(workoutDate.weekday, widget.targetDistance);
+      trainingPlan[workoutDate] = getWorkoutForTargetLifts(
+        workoutDate.weekday,
+        widget.benchPressTarget,
+        widget.squatTarget,
+        widget.deadliftTarget
+      );
     }
 
     return trainingPlan;
   }
 
-String getWorkoutForTargetDistance(int day, String targetDistance) {
-    switch (targetDistance) {
-      case '2.4km':
-        return getWorkoutFor2_4K(day);
-      case '5km':
-        return getWorkoutFor5K(day);
-      case '10km':
-        return getWorkoutFor10K(day);
-      case '21km':
-        return getWorkoutFor21K(day);
-      case '42km':
-        return getWorkoutFor42K(day);
+  String getWorkoutForTargetLifts(int day, double benchPressTarget, double squatTarget, double deadliftTarget) {
+    switch (day) {
+      case DateTime.monday:
+        String calculatedSquat = (0.7857 * squatTarget).toString();
+        String calculatedBench = (0.7857 * benchPressTarget).toString();
+        return '5 sets of 5 $calculatedBench kg Bench Press'"\n" 
+        "5 sets of 5 $calculatedSquat kg Squat" ;
+      case DateTime.tuesday:
+        return 'Rest day';
+      case DateTime.wednesday:
+        String calculatedSquat = (0.7857 * squatTarget).toString();
+        String calculatedBench2 = (0.72222 * benchPressTarget).toString();
+        return '4 sets of 8 $calculatedBench2 kg Bench Press'"\n"
+        "5 sets of 5 $calculatedSquat kg Squat" ;
+      case DateTime.thursday:
+        return 'Rest day';
+      case DateTime.friday:
+        String calculateDeadlift = (0.8 * deadliftTarget).toString();
+        String calculatedShoulderPress = (0.5 * benchPressTarget).toString();
+        return "5 sets of 5 $calculatedShoulderPress kg Shoulder Press""\n"
+        "3 sets of 6 $calculateDeadlift kg Deadlift";
+      case DateTime.saturday:
+        return 'Rest day';
+      case DateTime.sunday:
+        return "Rest day";
       default:
         return 'No workout available';
     }
-  } 
-  
-
-String getWorkoutFor2_4K(int day) {
-  switch (day) {
-    case DateTime.monday:
-      return '1km warm-up, 3km at a steady pace, 1km cool-down';
-    case DateTime.tuesday:
-      return 'Rest day';
-    case DateTime.wednesday:
-      return '800m intervals x 6, with 400m recovery jog';
-    case DateTime.thursday:
-      return 'Rest day';
-    case DateTime.friday:
-      return '1.5km easy run';
-    case DateTime.saturday:
-      return 'Rest day';
-    case DateTime.sunday:
-      return '5km race';
-    default:
-      return 'No workout available';
   }
-}
-
-
-String getWorkoutFor5K(int day) {
-  switch (day) {
-    case DateTime.monday:
-      return '1km warm-up, 3km at a steady pace, 1km cool-down';
-    case DateTime.tuesday:
-      return 'Rest day';
-    case DateTime.wednesday:
-      return '800m intervals x 6, with 400m recovery jog';
-    case DateTime.thursday:
-      return 'Rest day';
-    case DateTime.friday:
-      return '1.5km easy run';
-    case DateTime.saturday:
-      return 'Rest day';
-    case DateTime.sunday:
-      return '5km race';
-    default:
-      return 'No workout available';
-  }
-}
-
-String getWorkoutFor10K(int day) {
-  switch (day) {
-    case DateTime.monday:
-      return '2km warm-up, 6km at a steady pace, 2km cool-down';
-    case DateTime.tuesday:
-      return 'Rest day';
-    case DateTime.wednesday:
-      return '1km intervals x 8, with 400m recovery jog';
-    case DateTime.thursday:
-      return 'Rest day';
-    case DateTime.friday:
-      return '2km easy run';
-    case DateTime.saturday:
-      return 'Rest day';
-    case DateTime.sunday:
-      return '10km race';
-    default:
-      return 'No workout available';
-  }
-}
-
-String getWorkoutFor21K(int day) {
-  switch (day) {
-    case DateTime.monday:
-      return '3km warm-up, 15km at a steady pace, 3km cool-down';
-    case DateTime.tuesday:
-      return 'Rest day';
-    case DateTime.wednesday:
-      return '1km intervals x 10, with 400m recovery jog';
-    case DateTime.thursday:
-      return 'Rest day';
-    case DateTime.friday:
-      return '3km easy run';
-    case DateTime.saturday:
-      return 'Rest day';
-    case DateTime.sunday:
-      return '21km race';
-    default:
-      return 'No workout available';
-  }
-}
-
-String getWorkoutFor42K(int day) {
-  switch (day) {
-    case DateTime.monday:
-      return '5km warm-up, 30km at a steady pace, 5km cool-down';
-    case DateTime.tuesday:
-      return 'Rest day';
-    case DateTime.wednesday:
-      return '2km intervals x 10, with 400m recovery jog';
-    case DateTime.thursday:
-      return 'Rest day';
-    case DateTime.friday:
-      return '5km easy run';
-    case DateTime.saturday:
-      return 'Rest day';
-    case DateTime.sunday:
-      return '42km race';
-    default:
-      return 'No workout available';
-  }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -214,8 +130,7 @@ String getWorkoutFor42K(int day) {
                     _focusedDay = focusedDay;
                     trainingPlan = generateTrainingPlan();
                     print('Selected Day: $_selectedDay');
-                  }
-                  );
+                  });
                 },
                 availableCalendarFormats: const {
                   CalendarFormat.month: 'Month',
@@ -239,26 +154,27 @@ String getWorkoutFor42K(int day) {
             ),
             const SizedBox(height: 20),
             if (_selectedDay != null)
-  Card(
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-  children: [
-    Text(
-      DateFormat.yMMMMd().format(_selectedDay!),
-      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-    ),    
-    const SizedBox(height: 10),
-    Text(
-      'Training Plan: ${getWorkoutForTargetDistance(_selectedDay!.weekday, widget.targetDistance)}', // Print training plan
-      style: const TextStyle(fontSize: 16),
-    ),
-  ],
-),
-
-    ),
-  ),
-
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        DateFormat.yMMMMd().format(_selectedDay!),
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Training Plan: ${getWorkoutForTargetLifts(_selectedDay!.weekday, 
+                        widget.benchPressTarget,
+                        widget.squatTarget,
+                        widget.deadliftTarget)}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       ),

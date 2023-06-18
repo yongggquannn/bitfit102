@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/selection/running.dart';
+import 'package:bitfit102/selection/lifting.dart';
 
 class WorkoutSelection extends StatefulWidget {
   const WorkoutSelection({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
             const SizedBox(height: 20),
             ListTile(
               title: const Text('Train for a race'),
-              leading: Radio(
+              leading: Radio<String>(
                 value: 'Train for a race',
                 groupValue: selectedGoal,
                 onChanged: (value) {
@@ -44,7 +45,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
             ),
             ListTile(
               title: const Text('Improve lifting strength'),
-              leading: Radio(
+              leading: Radio<String>(
                 value: 'Improve lifting strength',
                 groupValue: selectedGoal,
                 onChanged: (value) {
@@ -56,7 +57,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
             ),
             ListTile(
               title: const Text('I want to train both running and lifting'),
-              leading: Radio(
+              leading: Radio<String>(
                 value: 'I want to train both running and lifting',
                 groupValue: selectedGoal,
                 onChanged: (value) {
@@ -79,6 +80,15 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                           builder: (context) => RunningPage(userId: userId),
                         ),
                       );
+                    } else if (selectedGoal == 'Improve lifting strength') {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LiftingPage(userId: userId),
+                        ),
+                      );
+                    } else if (selectedGoal == 'I want to train both running and lifting') {
+                      // Handle both running and lifting case
                     }
                   }
                 } else {
