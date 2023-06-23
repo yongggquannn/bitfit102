@@ -142,6 +142,7 @@ Widget build(BuildContext context) {
                       ),
                       onPressed: () async {
                         dynamic result = await _auth.signInAnon();
+                        
                         if (result == null) {
                           setState(() => error = 'Error signing in anonymously');
                         }

@@ -1,3 +1,4 @@
+import 'package:bitfit102/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/selection/running.dart';
@@ -89,6 +90,12 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                       );
                     } else if (selectedGoal == 'I want to train both running and lifting') {
                       // Handle both running and lifting case
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RunningPage(userId: userId),
+                        ),
+                      );
                     }
                   }
                 } else {

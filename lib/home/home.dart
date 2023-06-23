@@ -1,14 +1,17 @@
 import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
+import "package:bitfit102/workout_selection/workout_selection.dart";
 import 'package:flutter/material.dart';
 import "package:bitfit102/screens/services/database.dart";
 import "package:provider/provider.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:bitfit102/home/profile_list.dart";
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import "package:bitfit102/home/videos_page.dart";
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -27,8 +30,9 @@ class _HomeState extends State<Home> {
       ExpansionPanelItem(
         headerText: 'Homepage',
         children: [
-          'Explore workout plans',
+          'Explore Workout Plans',
           'Workout History',
+          "Change Workout Selection"
         ],
         isExpanded: false, // Updated: Set the initial expansion state for each item
       ),
@@ -42,6 +46,8 @@ class _HomeState extends State<Home> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<QuerySnapshot?>.value(
@@ -51,7 +57,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text('bitFit102'),
+          title: Text('Welcome, User'), 
           backgroundColor: Colors.blue[400],
           elevation: 0.0,
           actions: <Widget>[
@@ -78,41 +84,151 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: ListView(
-        children: <Widget>[
-          ExpansionPanelList(
-            elevation: 1,
-            expandedHeaderPadding: const EdgeInsets.all(0),
-            expansionCallback: (int index, bool isExpanded) {
-              _expandCallback(index); // Updated: Pass the index to the expansion callback
-            },
-            children: panelItems.map<ExpansionPanel>((item) {
-              return ExpansionPanel(
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return ListTile(
-                    title: Text(
-                      item.headerText,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  );
-                },
-                body: Column(
-                  children: item.children.map<Widget>((child) {
+      body: Column(
+  children: <Widget>[
+    Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            ExpansionPanelList(
+              elevation: 1,
+              expandedHeaderPadding: const EdgeInsets.all(0),
+              expansionCallback: (int index, bool isExpanded) {
+                _expandCallback(index); // Updated: Pass the index to the expansion callback
+              },
+              children: panelItems.map<ExpansionPanel>((item) {
+                return ExpansionPanel(
+                  headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
-                      title: Text(child),
+                      title: Text(
+                        item.headerText,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
                     );
-                  }).toList(),
-                ),
-                isExpanded: item.isExpanded,
-              );
-            }).toList(),
+                  },
+                  body: Column(
+                    children: item.children.map<Widget>((child) {
+                      if (child == 'Change Workout Selection') {
+                        return ListTile(
+                          title: Text(child),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => WorkoutSelection()),
+                            );
+                          },
+                        );
+                      } else {
+                        return ListTile(
+                          title: Text(child),
+                        );
+                      }
+                    }).toList(),
+                  ),
+                  isExpanded: item.isExpanded,
+                );
+              }).toList(),
+            ),
+            Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Recommended Videos',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
           ),
-          const ProfileList(),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => VideosPage(),
+              ),
+            );
+            },
+            child: Text(
+              'View All',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
         ],
       ),
+      SizedBox(height: 8.0),
+      Container(
+        color: Colors.blue,
+        padding: EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/ytcadence.jpg',
+              width: 150,
+              height: 150,
+            ),
+            SizedBox(width: 8.0),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+        alignment: Alignment.center,
+        child: Text(
+          'Watch Now',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+                  SizedBox(height: 8.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+        FeatherIcons.arrowLeft,
+        color: Colors.yellow,
+        size: 32.0,
+      ),
+                          onPressed: () {
+                            launch('https://www.youtube.com/watch?v=eacl52qzr4E');
+                          },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const ProfileList(),
+          ],
+        ),
+      ),
+    ),
+  ],
+),
+
+
       ),
     );
   }
@@ -129,3 +245,6 @@ class ExpansionPanelItem {
     required this.isExpanded,
   });
 }
+
+
+    

@@ -9,7 +9,7 @@ class RunPlanPage extends StatefulWidget {
   final String targetDistance;
   final AuthService _auth = AuthService();
 
-  RunPlanPage({super.key, required this.targetDistance});
+  RunPlanPage({required this.targetDistance});
 
   @override
   _RunPlanPageState createState() => _RunPlanPageState();
@@ -73,13 +73,13 @@ String getWorkoutFor2_4K(int day) {
     case DateTime.wednesday:
       return '800m intervals x 6, with 400m recovery jog';
     case DateTime.thursday:
-      return 'Rest day';
+      return '5km long run at easy pace';
     case DateTime.friday:
-      return '1.5km easy run';
+      return '400m intervals x 10 at race pace';
     case DateTime.saturday:
       return 'Rest day';
     case DateTime.sunday:
-      return '5km race';
+      return '60mins easy run';
     default:
       return 'No workout available';
   }
@@ -99,9 +99,9 @@ String getWorkoutFor5K(int day) {
     case DateTime.friday:
       return '1.5km easy run';
     case DateTime.saturday:
-      return 'Rest day';
+      return '3km tempo';
     case DateTime.sunday:
-      return '5km race';
+      return 'Rest day';
     default:
       return 'No workout available';
   }
@@ -114,15 +114,15 @@ String getWorkoutFor10K(int day) {
     case DateTime.tuesday:
       return 'Rest day';
     case DateTime.wednesday:
-      return '1km intervals x 8, with 400m recovery jog';
+      return '1km intervals x 6, with 400m recovery jog';
     case DateTime.thursday:
       return 'Rest day';
     case DateTime.friday:
       return '2km easy run';
     case DateTime.saturday:
-      return 'Rest day';
+      return '4km tempo run';
     case DateTime.sunday:
-      return '10km race';
+      return 'Rest day';
     default:
       return 'No workout available';
   }
@@ -141,9 +141,9 @@ String getWorkoutFor21K(int day) {
     case DateTime.friday:
       return '3km easy run';
     case DateTime.saturday:
-      return 'Rest day';
+      return '7km tempo run';
     case DateTime.sunday:
-      return '21km race';
+      return 'Rest day';
     default:
       return 'No workout available';
   }
@@ -152,19 +152,19 @@ String getWorkoutFor21K(int day) {
 String getWorkoutFor42K(int day) {
   switch (day) {
     case DateTime.monday:
-      return '5km warm-up, 30km at a steady pace, 5km cool-down';
+      return '2km warm-up, 12km at a steady-moderate pace, 2km cool-down';
     case DateTime.tuesday:
-      return 'Rest day';
+      return '10km easy run';
     case DateTime.wednesday:
-      return '2km intervals x 10, with 400m recovery jog';
+      return '1.2km intervals x 6, with 400m recovery jog';
     case DateTime.thursday:
       return 'Rest day';
     case DateTime.friday:
-      return '5km easy run';
+      return '70 mins easy run';
     case DateTime.saturday:
-      return 'Rest day';
+      return '7km tempo run';
     case DateTime.sunday:
-      return '42km race';
+      return 'Rest day';
     default:
       return 'No workout available';
   }
@@ -183,7 +183,7 @@ String getWorkoutFor42K(int day) {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Home()),
+                MaterialPageRoute(builder: (context) => Home()),
               );
             },
           ),

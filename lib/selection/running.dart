@@ -6,7 +6,7 @@ import "package:bitfit102/selection/run_plan.dart";
 class RunningPage extends StatefulWidget {
   final String userId;
 
-  const RunningPage({super.key, required this.userId});
+  const RunningPage({required this.userId});
 
   @override
   _RunningPageState createState() => _RunningPageState();
@@ -53,18 +53,18 @@ class _RunningPageState extends State<RunningPage> {
                     fitnessLevel = value!;
                   });
                 },
-                items: const <DropdownMenuItem<String>>[
+                items: <DropdownMenuItem<String>>[
                   DropdownMenuItem<String>(
                     value: 'Beginner',
-                    child: Text('Beginner'),
+                    child: const Text('Beginner'),
                   ),
                   DropdownMenuItem<String>(
                     value: 'Intermediate',
-                    child: Text('Intermediate'),
+                    child: const Text('Intermediate'),
                   ),
                   DropdownMenuItem<String>(
                     value: 'Advanced',
-                    child: Text('Advanced'),
+                    child: const Text('Advanced'),
                   ),
                 ],
                 decoration: textInputDecoration.copyWith(labelText: 'Fitness Level'),
@@ -77,26 +77,26 @@ class _RunningPageState extends State<RunningPage> {
                     targetDistance = value!;
                   });
                 },
-                items: const <DropdownMenuItem<String>>[
+                items: <DropdownMenuItem<String>>[
                   DropdownMenuItem<String>(
                     value: '2.4km',
-                    child: Text('2.4km'),
+                    child: const Text('2.4km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '5km',
-                    child: Text('5km'),
+                    child: const Text('5km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '10km',
-                    child: Text('10km'),
+                    child: const Text('10km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '21km',
-                    child: Text('21km'),
+                    child: const Text('21km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '42km',
-                    child: Text('42km'),
+                    child: const Text('42km'),
                   ),
                 ],
                 decoration: textInputDecoration.copyWith(labelText: 'Target Distance'),

@@ -43,9 +43,10 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => SignIn(toggleView: () {})),
-              );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SignIn(toggleView: () {})),
+                  );
                 },
               ),
             ),
@@ -98,11 +99,11 @@ class _RegisterState extends State<Register> {
                                   () => error = 'Please enter a valid email');
                             }
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
+                                context,
+                                MaterialPageRoute(
                                   builder: (context) =>
                                       const WorkoutSelection(),
-                            ));
+                                ));
                           }
                         }),
                     const SizedBox(height: 12.0),

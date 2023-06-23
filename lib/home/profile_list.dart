@@ -14,11 +14,6 @@ class _ProfileListState extends State<ProfileList> {
   Widget build(BuildContext context) {
 
     final profiles = Provider.of<QuerySnapshot?>(context);
-    if (profiles != null) {
-      for (var doc in profiles.docs) {
-        print(doc.data());
-      }
-    }
     return Container(
 
     );
