@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
-import "package:bitfit102/selection/run_plan.dart";
+import 'package:bitfit102/selection/calendar.dart';
 
 class RunningPage extends StatefulWidget {
   final String userId;
+  final String? selectedGoal;
 
-  const RunningPage({required this.userId});
+  const RunningPage(
+      {super.key, required this.userId, required this.selectedGoal});
 
   @override
   _RunningPageState createState() => _RunningPageState();
@@ -53,21 +55,22 @@ class _RunningPageState extends State<RunningPage> {
                     fitnessLevel = value!;
                   });
                 },
-                items: <DropdownMenuItem<String>>[
+                items: const <DropdownMenuItem<String>>[
                   DropdownMenuItem<String>(
                     value: 'Beginner',
-                    child: const Text('Beginner'),
+                    child: Text('Beginner'),
                   ),
                   DropdownMenuItem<String>(
                     value: 'Intermediate',
-                    child: const Text('Intermediate'),
+                    child: Text('Intermediate'),
                   ),
                   DropdownMenuItem<String>(
                     value: 'Advanced',
-                    child: const Text('Advanced'),
+                    child: Text('Advanced'),
                   ),
                 ],
-                decoration: textInputDecoration.copyWith(labelText: 'Fitness Level'),
+                decoration:
+                    textInputDecoration.copyWith(labelText: 'Fitness Level'),
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
@@ -77,29 +80,30 @@ class _RunningPageState extends State<RunningPage> {
                     targetDistance = value!;
                   });
                 },
-                items: <DropdownMenuItem<String>>[
+                items: const <DropdownMenuItem<String>>[
                   DropdownMenuItem<String>(
                     value: '2.4km',
-                    child: const Text('2.4km'),
+                    child: Text('2.4km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '5km',
-                    child: const Text('5km'),
+                    child: Text('5km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '10km',
-                    child: const Text('10km'),
+                    child: Text('10km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '21km',
-                    child: const Text('21km'),
+                    child: Text('21km'),
                   ),
                   DropdownMenuItem<String>(
                     value: '42km',
-                    child: const Text('42km'),
+                    child: Text('42km'),
                   ),
                 ],
-                decoration: textInputDecoration.copyWith(labelText: 'Target Distance'),
+                decoration:
+                    textInputDecoration.copyWith(labelText: 'Target Distance'),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
@@ -122,11 +126,16 @@ class _RunningPageState extends State<RunningPage> {
                     );
 
                     Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RunPlanPage(targetDistance: targetDistance),
-        ),
-      );
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CalendarPage(
+                            targetDistance: targetDistance,
+                            benchPressTarget: 0,
+                            squatTarget: 0,
+                            deadliftTarget: 0,
+                            selectedGoal: widget.selectedGoal),
+                      ),
+                    );
                   }
                 },
                 child: const Text('Save'),
@@ -138,5 +147,3 @@ class _RunningPageState extends State<RunningPage> {
     );
   }
 }
-
-

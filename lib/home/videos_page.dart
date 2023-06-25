@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VideosPage extends StatelessWidget {
+  const VideosPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     List<Video> videos = [
@@ -29,18 +31,18 @@ class VideosPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Videos'),
+        title: const Text('Videos'),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: videos.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: ListTile(
                   leading: Image.network(videos[index].thumbnailUrl),
                   title: Text(videos[index].title),

@@ -6,7 +6,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
-import 'package:bitfit102/home/home.dart';
 import 'package:bitfit102/screens/authenticate/sign_in.dart';
 import 'package:table_calendar/table_calendar.dart';
 import "package:intl/intl.dart";
@@ -15,7 +14,7 @@ class RunPlanPage extends StatefulWidget {
   final String targetDistance;
   final AuthService _auth = AuthService();
 
-  RunPlanPage({required this.targetDistance});
+  RunPlanPage({super.key, required this.targetDistance});
 
   @override
   _RunPlanPageState createState() => _RunPlanPageState();
@@ -189,7 +188,7 @@ String getWorkoutFor42K(int day) {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Home()),
+                MaterialPageRoute(builder: (context) => SignIn(toggleView: () {})),
               );
             },
           ),

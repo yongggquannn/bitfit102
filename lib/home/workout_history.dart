@@ -10,6 +10,8 @@ class WorkoutData {
 }
 
 class WorkoutHistory extends StatefulWidget {
+  const WorkoutHistory({super.key});
+
   @override
   _WorkoutHistoryState createState() => _WorkoutHistoryState();
 }
@@ -43,22 +45,22 @@ class _WorkoutHistoryState extends State<WorkoutHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Workout History'),
+        title: const Text('Workout History'),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Running Distance:',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               DropdownButton<String>(
   value: selectedDistance.isNotEmpty ? selectedDistance : defaultDistance,
   items: [
-    DropdownMenuItem<String>(
+    const DropdownMenuItem<String>(
       value: '',
       child: Text('Default'),
     ),
@@ -82,15 +84,15 @@ class _WorkoutHistoryState extends State<WorkoutHistory> {
 
 ,
 
-              SizedBox(height: 16.0),
-              Text(
+              const SizedBox(height: 16.0),
+              const Text(
                 'Lift Target:',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               DropdownButton<String>(
   value: selectedLiftTarget.isNotEmpty ? selectedLiftTarget : defaultLiftTarget,
   items: [
-    DropdownMenuItem<String>(
+    const DropdownMenuItem<String>(
       value: '',
       child: Text('Default'),
     ),
@@ -113,30 +115,30 @@ class _WorkoutHistoryState extends State<WorkoutHistory> {
 )
 
 ,
-              SizedBox(height: 16.0),
-              Text(
+              const SizedBox(height: 16.0),
+              const Text(
                 'Reps/Timing:',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               TextField(
                 controller: repsTimingController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Enter reps or timing',
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
                   addWorkoutData();
                 },
-                child: Text('Add Workout'),
+                child: const Text('Add Workout'),
               ),
-              SizedBox(height: 16.0),
-              Text(
+              const SizedBox(height: 16.0),
+              const Text(
                 'Workout History:',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance.collection('workoutData').snapshots(),
                 builder: (context, snapshot) {
@@ -161,7 +163,7 @@ class _WorkoutHistoryState extends State<WorkoutHistory> {
                         return ListTile(
                           title: Text('${workoutData.workoutType}: ${workoutData.workoutName} (${workoutData.repsOrTiming})'),
                           trailing: IconButton(
-                            icon: Icon(Icons.delete),
+                            icon: const Icon(Icons.delete),
                             onPressed: () {
                               deleteWorkoutData(workoutData); // Call function to delete workout data
                             },
@@ -170,7 +172,7 @@ class _WorkoutHistoryState extends State<WorkoutHistory> {
                       },
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }

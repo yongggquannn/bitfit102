@@ -1,4 +1,3 @@
-import 'package:bitfit102/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/selection/running.dart';
@@ -21,6 +20,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Workout Selection'),
       ),
       body: Center(
@@ -78,14 +78,14 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RunningPage(userId: userId),
+                          builder: (context) => RunningPage(userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     } else if (selectedGoal == 'Improve lifting strength') {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LiftingPage(userId: userId),
+                          builder: (context) => LiftingPage(userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     } else if (selectedGoal == 'I want to train both running and lifting') {
@@ -93,7 +93,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RunningPage(userId: userId),
+                          builder: (context) => RunningPage(userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     }

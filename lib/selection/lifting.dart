@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
-import "package:bitfit102/selection/lift_plan.dart";
+import 'package:bitfit102/selection/calendar.dart';
 
 class LiftingPage extends StatefulWidget {
   final String userId;
+  final String? selectedGoal;
 
-  const LiftingPage({Key? key, required this.userId}) : super(key: key);
+  const LiftingPage({Key? key, required this.userId, required this.selectedGoal}) : super(key: key);
 
   @override
   _LiftingPageState createState() => _LiftingPageState();
@@ -19,6 +20,8 @@ class _LiftingPageState extends State<LiftingPage> {
   final TextEditingController squatController = TextEditingController();
   final TextEditingController deadliftController = TextEditingController();
   
+  //Empty String if never select running plan
+  String targetDistance = "";
   String fitnessLevel = 'Beginner'; // Default value
   bool isNameEmpty = false; // Track whether the name field is empty
 
@@ -35,6 +38,7 @@ class _LiftingPageState extends State<LiftingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         title: const Text('Lifting Details'),
       ),
       body: SingleChildScrollView(
@@ -122,9 +126,11 @@ class _LiftingPageState extends State<LiftingPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LiftPlanPage(benchPressTarget: benchPressTarget,
+                        builder: (context) => CalendarPage(targetDistance: targetDistance,
+                                                            benchPressTarget: benchPressTarget,
                                                             squatTarget: squatTarget,
-                                                            deadliftTarget: deadliftTarget),
+                                                            deadliftTarget: deadliftTarget,
+                                                            selectedGoal: widget.selectedGoal),
                       ),
                     );
                   }

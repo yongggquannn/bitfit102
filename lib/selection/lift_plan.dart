@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
-import 'package:bitfit102/home/home.dart';
 import 'package:bitfit102/screens/authenticate/sign_in.dart';
 import 'package:table_calendar/table_calendar.dart';
 import "package:intl/intl.dart";
@@ -60,22 +59,22 @@ void initState() {
   String getWorkoutForTargetLifts(int day, double benchPressTarget, double squatTarget, double deadliftTarget) {
     switch (day) {
       case DateTime.monday:
-        String calculatedSquat = (0.7857 * squatTarget).toString();
-        String calculatedBench = (0.7857 * benchPressTarget).toString();
+        String calculatedSquat = (0.7857 * squatTarget).ceil().toString();
+        String calculatedBench = (0.7857 * benchPressTarget).ceil().toString();
         return '5 sets of 5 $calculatedBench kg Bench Press'"\n" 
         "5 sets of 5 $calculatedSquat kg Squat" ;
       case DateTime.tuesday:
         return 'Rest day';
       case DateTime.wednesday:
-        String calculatedSquat = (0.7857 * squatTarget).toString();
-        String calculatedBench2 = (0.72222 * benchPressTarget).toString();
+        String calculatedSquat = (0.7857 * squatTarget).ceil().toString();
+        String calculatedBench2 = (0.72222 * benchPressTarget).ceil().toString();
         return '4 sets of 8 $calculatedBench2 kg Bench Press'"\n"
         "5 sets of 5 $calculatedSquat kg Squat" ;
       case DateTime.thursday:
         return 'Rest day';
       case DateTime.friday:
-        String calculateDeadlift = (0.8 * deadliftTarget).toString();
-        String calculatedShoulderPress = (0.5 * benchPressTarget).toString();
+        String calculateDeadlift = (0.8 * deadliftTarget).ceil().toString();
+        String calculatedShoulderPress = (0.5 * benchPressTarget).ceil().toString();
         return "5 sets of 5 $calculatedShoulderPress kg Shoulder Press""\n"
         "3 sets of 6 $calculateDeadlift kg Deadlift";
       case DateTime.saturday:
@@ -98,7 +97,7 @@ void initState() {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Home()),
+                MaterialPageRoute(builder: (context) => SignIn(toggleView: () {})),
               );
             },
           ),
