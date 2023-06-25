@@ -1,3 +1,4 @@
+import "package:bitfit102/home/workout_history.dart";
 import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
 import "package:bitfit102/workout_selection/workout_selection.dart";
@@ -37,6 +38,8 @@ class _HomeState extends State<Home> {
         isExpanded: false, // Updated: Set the initial expansion state for each item
       ),
     ];
+
+    
   }
 
   void _expandCallback(int index) {
@@ -121,9 +124,29 @@ class _HomeState extends State<Home> {
                             );
                           },
                         );
+                      } else if (child == 'Workout History') {
+                        return ListTile(
+                          title: Text(child),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => WorkoutHistory()),
+                            );
+                          },
+                        );
                       } else {
                         return ListTile(
                           title: Text(child),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Text('Detailed workout plans will be coming soon.'),
+                                );
+                              },
+                            );
+                          },
                         );
                       }
                     }).toList(),

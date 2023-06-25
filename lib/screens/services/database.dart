@@ -32,4 +32,7 @@ class DatabaseService {
   Stream<QuerySnapshot> get profiles {
     return profileCollection.snapshots();   
   }
+
+  
+
 }
