@@ -38,15 +38,15 @@ The **iOS App & Android App** provides a interface for users to keep track of th
 
 Features to be completed by the mid of June:
 
-1\. Inserting Fitness Goals
+1\. Inserting Fitness Goals &#10004;
 
 a. Users will be able to select the fitness goal.
 
-2\. Workout Plan
+2\. Workout Plan &#10004;
 
 a. Users will be able to see their progress of workout plan in their homepage.
 
-3\. Explore Page
+3\. Explore Page &#10004;
 
 a. Users will have the flexibility to change their workout plan.
 
@@ -81,16 +81,17 @@ some people want to train both running and strength concurrently.
 
 **Development Plan**
 
-**1st week of May:** Finalized pitch for Orbital Lift-off 
-**2nd week of May:** Created Mockup
-**3rd week of May:** Pick up necessary technologies - Flutter, Dart, Firebase 
-**4th week of June:** Starting on Registration Page and do diagrams
-**1st week of June:** Start on the Accordian for homepage (Stores current workout plan)
-**3rd week of June:** Continue with homepage (Adding explore workout plans into homepage)
-**4th week of June:** Testing and debugging
-**1st week of July:** Implementation of peer teams’ suggestions
-**2nd week of July:** Implement additional capabilities – Workout log 
-**3rd week of July:** Testing and debugging
+<p>1st week of May: Finalized pitch for Orbital Lift-off<br>
+2nd week of May: Created Mockup<br>
+3rd week of May: Pick up necessary technologies - Flutter, Dart, Firebase<br>
+4th week of June: Starting on Registration Page and do diagrams<br>
+1st week of June: Start on the Accordian for homepage (Stores current workout plan)<br>
+3rd week of June: Continue with homepage (Adding explore workout plans into homepage)<br>
+4th week of June: Testing and debugging<br>
+1st week of July: Implementation of peer teams’ suggestions<br>
+2nd week of July: Implement additional capabilities – Workout log<br>
+3rd week of July: Testing and debugging</p>
+
 
 
 **User Guide**
@@ -107,11 +108,18 @@ Press the link from the provided URL. You can install the apk inside the phone i
 
 The **technical proof** is as shown below
 
-<img src="assets/bitfitupdatedhome.png" width="225" height="450">
-
 
 <img src="assets/bitfitregister.png" width="225" height="450">
 
 
 <img src="assets/bitfitsignin.png" width="225" height="450">
+
+
+<img src="assets/updatedHomePage.png" width="225" height="450">
+
+
+<img src="assets/calendar.png" width="225" height="450">
+
+
+<img src="assets/workoutHistory.png" width="225" height="450">
 

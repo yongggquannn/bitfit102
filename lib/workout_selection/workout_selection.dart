@@ -13,6 +13,7 @@ class WorkoutSelection extends StatefulWidget {
 
 class _WorkoutSelectionState extends State<WorkoutSelection> {
   String? selectedGoal;
+  bool selectedWorkout = false; //Potentially be used for other features
 
   // Create an instance of AuthService
   final AuthService authService = AuthService();
@@ -21,7 +22,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: selectedWorkout == false,
         title: const Text('Workout Selection'),
       ),
       body: Center(
@@ -74,27 +75,35 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                 if (selectedGoal != null) {
                   final String? userId = await authService.getCurrentUserId();
                   if (userId != null) {
+                    setState(() {
+                      selectedWorkout =
+                          true; 
+                    });
                     print('Selected goal: $selectedGoal');
                     if (selectedGoal == 'Train for a race') {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RunningPage(userId: userId, selectedGoal: selectedGoal),
+                          builder: (context) => RunningPage(
+                              userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     } else if (selectedGoal == 'Improve lifting strength') {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LiftingPage(userId: userId, selectedGoal: selectedGoal),
+                          builder: (context) => LiftingPage(
+                              userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
-                    } else if (selectedGoal == 'I want to train both running and lifting') {
+                    } else if (selectedGoal ==
+                        'I want to train both running and lifting') {
                       // Handle both running and lifting case
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HybridPage(userId: userId, selectedGoal: selectedGoal),
+                          builder: (context) => HybridPage(
+                              userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     }
