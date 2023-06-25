@@ -3,21 +3,21 @@ import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
 import 'package:bitfit102/selection/calendar.dart';
 
-class HyrbridPage extends StatefulWidget {
+class HybridPage extends StatefulWidget {
   final String userId;
   final String? selectedGoal;
 
-  const HyrbridPage({
+  const HybridPage({
     Key? key,
     required this.userId,
     required this.selectedGoal,
   }) : super(key: key);
 
   @override
-  _HyrbridPageState createState() => _HyrbridPageState();
+  _HybridPageState createState() => _HybridPageState();
 }
 
-class _HyrbridPageState extends State<HyrbridPage> {
+class _HybridPageState extends State<HybridPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController benchPressController = TextEditingController();
   final TextEditingController squatController = TextEditingController();

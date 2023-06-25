@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/auth.dart';
 import 'package:bitfit102/selection/running.dart';
 import 'package:bitfit102/selection/lifting.dart';
-import 'package:bitfit102/selection/hyrbrid.dart';
+import 'package:bitfit102/selection/hybrid.dart';
 
 class WorkoutSelection extends StatefulWidget {
   const WorkoutSelection({Key? key}) : super(key: key);
@@ -94,7 +94,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HyrbridPage(userId: userId, selectedGoal: selectedGoal),
+                          builder: (context) => HybridPage(userId: userId, selectedGoal: selectedGoal),
                         ),
                       );
                     }
