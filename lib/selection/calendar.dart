@@ -65,7 +65,44 @@ class _CalendarPageState extends State<CalendarPage> {
             widget.deadliftTarget);
       }
     }
+
+    if (widget.selectedGoal == 'I want to train both running and lifting') {
+      for (int i = 0; i < 7; i++) {
+        DateTime workoutDate = startDate.add(Duration(days: i));
+        trainingPlan[workoutDate] = getWorkoutforHyrbrid(
+            workoutDate.weekday,
+            widget.targetDistance,
+            widget.benchPressTarget,
+            widget.squatTarget,
+            widget.deadliftTarget);
+      }
+    }
     return trainingPlan;
+  }
+
+  String getWorkoutforHyrbrid(int day, String targetDistance,
+  double benchPressTarget, double squatTarget, double deadliftTarget) {
+    switch (day) {
+        case DateTime.monday:
+          return getWorkoutForTargetLifts(day
+          , benchPressTarget, squatTarget, deadliftTarget);
+        case DateTime.tuesday:
+          return getWorkoutForTargetDistance(day, targetDistance);
+        case DateTime.wednesday:
+          return getWorkoutForTargetLifts(day
+          , benchPressTarget, squatTarget, deadliftTarget);
+        case DateTime.thursday:
+          return getWorkoutForTargetDistance(day, targetDistance);
+        case DateTime.friday:
+          return getWorkoutForTargetLifts(day
+          , benchPressTarget, squatTarget, deadliftTarget);
+        case DateTime.saturday:
+          return getWorkoutForTargetDistance(day, targetDistance);
+        case DateTime.sunday:
+          return "Rest Day";
+        default:
+          return 'No workout available';
+    }
   }
 
   String getWorkoutForTargetLifts(int day, double benchPressTarget,
@@ -331,6 +368,24 @@ class _CalendarPageState extends State<CalendarPage> {
                             const SizedBox(height: 10),
                             Text(
                               'Training Plan: ${getWorkoutForTargetDistance(_selectedDay!.weekday, widget.targetDistance)}',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      if (widget.selectedGoal == 'I want to train both running and lifting')
+                        Column(
+                          children: [
+                            Text(
+                              DateFormat.yMMMMd().format(_selectedDay!),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Training Plan: ${getWorkoutforHyrbrid(_selectedDay!.weekday, widget.targetDistance, widget.benchPressTarget,
+                              widget.squatTarget, widget.deadliftTarget)}',
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],

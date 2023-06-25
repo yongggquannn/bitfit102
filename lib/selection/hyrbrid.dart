@@ -1,27 +1,29 @@
-
 import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
 import 'package:bitfit102/selection/calendar.dart';
 
-class LiftingPage extends StatefulWidget {
+class HyrbridPage extends StatefulWidget {
   final String userId;
   final String? selectedGoal;
 
-  const LiftingPage({Key? key, required this.userId, required this.selectedGoal}) : super(key: key);
+  const HyrbridPage({
+    Key? key,
+    required this.userId,
+    required this.selectedGoal,
+  }) : super(key: key);
 
   @override
-  _LiftingPageState createState() => _LiftingPageState();
+  _HyrbridPageState createState() => _HyrbridPageState();
 }
 
-class _LiftingPageState extends State<LiftingPage> {
+class _HyrbridPageState extends State<HyrbridPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController benchPressController = TextEditingController();
   final TextEditingController squatController = TextEditingController();
   final TextEditingController deadliftController = TextEditingController();
-  
-  //Empty String if never select running plan
-  String targetDistance = "";
+
+  String targetDistance = '2.4km';
   String fitnessLevel = 'Beginner'; // Default value
   bool isNameEmpty = false; // Track whether the name field is empty
 
@@ -39,7 +41,7 @@ class _LiftingPageState extends State<LiftingPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Lifting Details'),
+        title: const Text('Training Details'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -51,29 +53,66 @@ class _LiftingPageState extends State<LiftingPage> {
                 decoration: textInputDecoration.copyWith(labelText: 'Name'),
                 maxLength: 20, // Set maximum character limit
               ),
-              if (isNameEmpty) // Display an error message if the name is empty
+              if (isNameEmpty)
+                // Display an error message if the name is empty
                 const Text(
                   'Please enter your name',
                   style: TextStyle(color: Colors.red),
                 ),
               const SizedBox(height: 10),
-              TextFormField(
-                controller: benchPressController,
-                decoration: textInputDecoration.copyWith(labelText: '1RM Bench Press Target'),
-                keyboardType: TextInputType.number, // Set keyboard type to number
+              DropdownButtonFormField<String>(
+                value: targetDistance,
+                onChanged: (value) {
+                  setState(() {
+                    targetDistance = value!;
+                  });
+                },
+                items: const <DropdownMenuItem<String>>[
+                  DropdownMenuItem<String>(
+                    value: '2.4km',
+                    child: Text('2.4km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '5km',
+                    child: Text('5km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '10km',
+                    child: Text('10km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '21km',
+                    child: Text('21km'),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '42km',
+                    child: Text('42km'),
+                  ),
+                ],
+                decoration:
+                    textInputDecoration.copyWith(labelText: 'Target Distance'),
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: squatController,
-                decoration: textInputDecoration.copyWith(labelText: '1RM Squat Target'),
-                keyboardType: TextInputType.number, // Set keyboard type to number
-              ),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: deadliftController,
-                decoration: textInputDecoration.copyWith(labelText: '1RM Max Deadlift Target'),
-                keyboardType: TextInputType.number, // Set keyboard type to number
-              ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: benchPressController,
+                  decoration: textInputDecoration.copyWith(
+                      labelText: '1RM Bench Press Target'),
+                  keyboardType: TextInputType.number, // Set keyboard type to number
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: squatController,
+                  decoration: textInputDecoration.copyWith(
+                      labelText: '1RM Squat Target'),
+                  keyboardType: TextInputType.number, // Set keyboard type to number
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: deadliftController,
+                  decoration: textInputDecoration.copyWith(
+                      labelText: '1RM Max Deadlift Target'),
+                  keyboardType: TextInputType.number, // Set keyboard type to number
+                ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 value: fitnessLevel,
@@ -96,15 +135,19 @@ class _LiftingPageState extends State<LiftingPage> {
                     child: Text('Advanced'),
                   ),
                 ],
-                decoration: textInputDecoration.copyWith(labelText: 'Fitness Level'),
+                decoration:
+                    textInputDecoration.copyWith(labelText: 'Fitness Level'),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
                   String name = nameController.text.trim();
-                  double benchPressTarget = double.parse(benchPressController.text.trim());
-                  double squatTarget = double.parse(squatController.text.trim());
-                  double deadliftTarget = double.parse(deadliftController.text.trim());
+                  double benchPressTarget =
+                      double.parse(benchPressController.text.trim());
+                  double squatTarget =
+                      double.parse(squatController.text.trim());
+                  double deadliftTarget =
+                      double.parse(deadliftController.text.trim());
 
                   if (name.isEmpty) {
                     setState(() {
@@ -126,11 +169,13 @@ class _LiftingPageState extends State<LiftingPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CalendarPage(targetDistance: targetDistance,
-                                                            benchPressTarget: benchPressTarget,
-                                                            squatTarget: squatTarget,
-                                                            deadliftTarget: deadliftTarget,
-                                                            selectedGoal: widget.selectedGoal),
+                        builder: (context) => CalendarPage(
+                          targetDistance: targetDistance,
+                          benchPressTarget: benchPressTarget,
+                          squatTarget: squatTarget,
+                          deadliftTarget: deadliftTarget,
+                          selectedGoal: widget.selectedGoal,
+                        ),
                       ),
                     );
                   }

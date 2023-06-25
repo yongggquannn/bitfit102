@@ -12,11 +12,14 @@ class Wrapper extends StatelessWidget {
 
     final user = Provider.of<MyUser?>(context);
     
+    return const Authenticate();
     // return either Home or Authenticate widget
+    /*
     if (user == null) {
       return const Authenticate();
     } else {
       return const WorkoutSelection();
     }
+    */
   }
 }

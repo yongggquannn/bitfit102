@@ -134,20 +134,6 @@ Widget build(BuildContext context) {
                         );
                       },
                     ),
-                    const SizedBox(),
-                    TextButton(
-                      child: const Text(
-                        'Sign in as guest',
-                        style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 15.0),
-                      ),
-                      onPressed: () async {
-                        dynamic result = await _auth.signInAnon();
-                        
-                        if (result == null) {
-                          setState(() => error = 'Error signing in anonymously');
-                        }
-                      },
-                    ),
                   ],
                 ),
               ],
