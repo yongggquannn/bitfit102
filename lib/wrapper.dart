@@ -1,6 +1,5 @@
 import "package:bitfit102/models/myuser.dart";
 import "package:bitfit102/screens/authenticate/authenticate.dart";
-import "package:bitfit102/workout_selection/workout_selection.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 

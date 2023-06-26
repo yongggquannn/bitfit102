@@ -22,7 +22,7 @@ class _WorkoutSelectionState extends State<WorkoutSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: selectedWorkout == false,
+        automaticallyImplyLeading: false,
         title: const Text('Workout Selection'),
       ),
       body: Center(

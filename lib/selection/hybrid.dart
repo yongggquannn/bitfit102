@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bitfit102/screens/services/database.dart';
 import 'package:bitfit102/shared/constants.dart';
 import 'package:bitfit102/selection/calendar.dart';
+import 'package:flutter/services.dart';
 
 class HybridPage extends StatefulWidget {
   final String userId;
@@ -98,6 +99,9 @@ class _HybridPageState extends State<HybridPage> {
                   decoration: textInputDecoration.copyWith(
                       labelText: '1RM Bench Press Target'),
                   keyboardType: TextInputType.number, // Set keyboard type to number
+                  inputFormatters: [
+                   FilteringTextInputFormatter.digitsOnly
+                ],
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -105,6 +109,9 @@ class _HybridPageState extends State<HybridPage> {
                   decoration: textInputDecoration.copyWith(
                       labelText: '1RM Squat Target'),
                   keyboardType: TextInputType.number, // Set keyboard type to number
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -112,6 +119,9 @@ class _HybridPageState extends State<HybridPage> {
                   decoration: textInputDecoration.copyWith(
                       labelText: '1RM Max Deadlift Target'),
                   keyboardType: TextInputType.number, // Set keyboard type to number
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
                 ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
