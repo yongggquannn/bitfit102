@@ -85,13 +85,14 @@ a. Users are able to see their current fitness level and identity within this pa
 <h5>SOLID Principles</h5>
 <li> Single Responsibility Principle (SRP) </li>
 <ul> 
-    <li> We put our code of similar functions into one method so that if we want to change a specific method, we do not need to change it in other places. For example, for our Calendar page, we store the workout plan inside the same calendar instead of separate calendars for each training plan. <li>
+    <li> We put our code of similar functions into one method so that if we want to change a specific method, we do not need to change it in other places. For example, for our Calendar page, we store the workout plan inside the same calendar instead of separate calendars for each training plan. </li>
+</ul>
 <li> Open Closed Priniciple (OCP) </li>
 <ul>
     <li> We ensure that every class and method should be open for extension, but closed for modification. We utlized Flutter/Dart as our frontend framework and Firebase as our backend service/authentication. </li>
     <li> We were able to expand the behaviour of the application by developing within the current classes or reuse the exisiting classes in place. This helps to add features easily or make modifications with ease. </li>
     <li> For firebase, we are able to store the variables of each user that registers with ease, such that every user has a unique userId, and we can use that to track the workout of the user.</li>
-<ul>
+</ul>
 
 **Tech Stack**
 
@@ -124,7 +125,7 @@ some people want to train both running and strength concurrently.
 
 **User Guide**
 
-<a href="https://drive.google.com/file/d/1XdNBDQc5L__D8BtHnDYelYHGu53Hi52T/view?usp=sharing"> Click here for APK </a>
+<a href="https://drive.google.com/file/d/1x8HTvLvBR8zbG8OJoIPGee6URYkTMDpa/view?usp=sharing"> Click here for APK </a>
 
 This is the link to our APK. To open the application, use supported web browsers (Chrome, Firefox or Safari), and make sure there is a stable internet connection.
 
