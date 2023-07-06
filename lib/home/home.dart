@@ -1,3 +1,4 @@
+import "package:bitfit102/home/explore_workout.dart";
 import "package:bitfit102/home/workout_history.dart";
 import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
@@ -159,14 +160,11 @@ class _HomeState extends State<Home> {
                                 return ListTile(
                                   title: Text(child),
                                   onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          content: Text(
-                                              'Detailed workout plans will be coming soon.'),
-                                        );
-                                      },
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ExploreWorkoutPage()),
                                     );
                                   },
                                 );

@@ -74,6 +74,9 @@ flutter:
     - assets/premium_photo-1669021454207-b4af6335dc90.avif
     - assets/photo-1517963879433-6ad2b056d712.avif
     - assets/ytcadence.jpg
+    - assets/trackimg.jpeg
+    - assets/gymimg.jpeg
+    - assets/faq.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
