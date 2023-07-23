@@ -123,6 +123,9 @@ class _RunningPageState extends State<RunningPage> {
                       name,
                       fitnessLevel,
                       targetDistance,
+                      null,
+                      null,
+                      null
                     );
                     Navigator.push(
                       context,
