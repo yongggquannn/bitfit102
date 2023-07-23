@@ -127,6 +127,7 @@ class _RunningPageState extends State<RunningPage> {
                       null,
                       null
                     );
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -135,9 +136,7 @@ class _RunningPageState extends State<RunningPage> {
                             benchPressTarget: 0,
                             squatTarget: 0,
                             deadliftTarget: 0,
-                            selectedGoal: widget.selectedGoal,
-                            fitnessLevel: fitnessLevel,
-                        ),
+                            selectedGoal: widget.selectedGoal),
                       ),
                     );
                   }
