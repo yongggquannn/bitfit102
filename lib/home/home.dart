@@ -1,4 +1,5 @@
 import "package:bitfit102/home/explore_workout.dart";
+import "package:bitfit102/home/profile_page.dart";
 import "package:bitfit102/home/workout_history.dart";
 import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
@@ -267,6 +268,15 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     const ProfileList(),
+                    ElevatedButton(
+          onPressed: () {
+            // Navigate to the ProfilePage when the button is pressed
+            Navigator.pushReplacement(context, MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProfilePage()));
+          },
+          child: Text('Visit my profile!'),
+        ),
                   ],
                 ),
               ),
