@@ -168,12 +168,13 @@ class _HybridPageState extends State<HybridPage> {
                       isNameEmpty = false;
                     });
 
-                    DatabaseService(uid: widget.userId).updateLifterUserData(
+                    DatabaseService(uid: widget.userId).updateUserData(
                       name,
                       fitnessLevel,
+                      targetDistance,
                       benchPressTarget,
                       squatTarget,
-                      deadliftTarget,
+                      deadliftTarget
                     );
 
                     Navigator.push(

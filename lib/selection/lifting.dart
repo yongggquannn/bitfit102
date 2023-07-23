@@ -125,12 +125,13 @@ class _LiftingPageState extends State<LiftingPage> {
                       isNameEmpty = false;
                     });
 
-                    DatabaseService(uid: widget.userId).updateLifterUserData(
+                    DatabaseService(uid: widget.userId).updateUserData(
                       name,
                       fitnessLevel,
+                      null,
                       benchPressTarget,
                       squatTarget,
-                      deadliftTarget,
+                      deadliftTarget
                     );
 
                     Navigator.push(
