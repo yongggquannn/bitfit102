@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -41,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
       if (_image != null) {
         final storage = FirebaseStorage.instance;
         final Reference storageReference =
-            storage.ref().child('user_profiles/${_name}.jpg');
+            storage.ref().child('user_profiles/$_name.jpg');
         final UploadTask uploadTask = storageReference.putFile(_image!);
         await uploadTask.whenComplete(() => print('Image uploaded'));
       }
@@ -68,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Profile data saved successfully')),
+        const SnackBar(content: Text('Profile data saved successfully')),
       );
     } catch (error) {
       print('Error saving profile data: $error');
@@ -77,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error saving profile data')),
+        const SnackBar(content: Text('Error saving profile data')),
       );
     }
   }
@@ -106,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Page'),
+        title: const Text('Profile Page'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -115,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  WidgetsBinding.instance?.addPostFrameCallback((_) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
                     _getImage();
                   });
                 },
@@ -123,14 +125,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   radius: 50,
                   backgroundImage: _image != null ? FileImage(_image!) : null,
                   child: _image == null
-                      ? Icon(Icons.add_a_photo, size: 50, color: Colors.white)
+                      ? const Icon(Icons.add_a_photo, size: 50, color: Colors.white)
                       : null,
                 ),
               ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 onChanged: (value) {
                   setState(() {
                     _name = value;
@@ -140,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: _bioController,
-                decoration: InputDecoration(labelText: 'Bio'),
+                decoration: const InputDecoration(labelText: 'Bio'),
                 onChanged: (value) {
                   setState(() {
                     _bio = value;
@@ -150,7 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _isLoading ? null : _saveProfileData,
-                child: _isLoading ? CircularProgressIndicator() : Text('Save'),
+                child: _isLoading ? const CircularProgressIndicator() : const Text('Save'),
               ),
             ],
           ),

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ExploreWorkoutPage extends StatelessWidget {
+  const ExploreWorkoutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Explore Workouts'),
+        title: const Text('Explore Workouts'),
       ),
       body: ListView(
-        children: [
+        children: const [
           WorkoutCard(
             image: AssetImage("assets/trackimg.jpeg"),
             title: '300m Intervals',
@@ -65,7 +67,7 @@ class WorkoutCard extends StatelessWidget {
   final String title;
   final String description;
 
-  const WorkoutCard({
+  const WorkoutCard({super.key, 
     required this.image,
     required this.title,
     required this.description,
@@ -89,12 +91,12 @@ class WorkoutCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Expanded(
                       child: ListView(
                         children: description
@@ -104,8 +106,8 @@ class WorkoutCard extends StatelessWidget {
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('•', style: TextStyle(fontSize: 16.0)),
-                                      SizedBox(width: 8.0),
+                                      const Text('•', style: TextStyle(fontSize: 16.0)),
+                                      const SizedBox(width: 8.0),
                                       Expanded(child: Text(item)),
                                     ],
                                   ),
@@ -134,7 +136,7 @@ class WorkoutCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),

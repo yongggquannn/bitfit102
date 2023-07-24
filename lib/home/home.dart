@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ExploreWorkoutPage()),
+                                              const ExploreWorkoutPage()),
                                     );
                                   },
                                 );
@@ -271,9 +271,9 @@ class _HomeState extends State<Home> {
             // Navigate to the ProfilePage when the button is pressed
             Navigator.pushReplacement(context, MaterialPageRoute(
                                           builder: (context) =>
-                                              ProfilePage()));
+                                              const ProfilePage()));
           },
-          child: Text('Visit my profile!'),
+          child: const Text('Visit my profile!'),
         ),
                   ],
                 ),

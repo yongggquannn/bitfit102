@@ -78,18 +78,18 @@ class _VideosPageState extends State<VideosPage> {
                   filterCategory = newValue!;
                 });
               },
-              items: [
+              items: const [
                 DropdownMenuItem(
                   value: '',
-                  child: const Text('All Videos'),
+                  child: Text('All Videos'),
                 ),
                 DropdownMenuItem(
                   value: 'running',
-                  child: const Text('Running Videos'),
+                  child: Text('Running Videos'),
                 ),
                 DropdownMenuItem(
                   value: 'lifting',
-                  child: const Text('Lifting Videos'),
+                  child: Text('Lifting Videos'),
                 ),
               ],
             ),
