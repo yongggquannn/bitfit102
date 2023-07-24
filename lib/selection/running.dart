@@ -30,6 +30,7 @@ class _RunningPageState extends State<RunningPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Running Details'),
       ),
       body: SingleChildScrollView(
@@ -123,6 +124,9 @@ class _RunningPageState extends State<RunningPage> {
                       name,
                       fitnessLevel,
                       targetDistance,
+                      null,
+                      null,
+                      null
                     );
 
                     Navigator.push(

@@ -1,3 +1,5 @@
+import "package:bitfit102/home/explore_workout.dart";
+import "package:bitfit102/home/profile_page.dart";
 import "package:bitfit102/home/workout_history.dart";
 import "package:bitfit102/screens/authenticate/sign_in.dart";
 import 'package:bitfit102/screens/services/auth.dart';
@@ -7,7 +9,6 @@ import 'package:flutter/material.dart';
 import "package:bitfit102/screens/services/database.dart";
 import "package:provider/provider.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
-import "package:bitfit102/home/profile_list.dart";
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import "package:bitfit102/home/videos_page.dart";
@@ -159,14 +160,11 @@ class _HomeState extends State<Home> {
                                 return ListTile(
                                   title: Text(child),
                                   onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          content: Text(
-                                              'Detailed workout plans will be coming soon.'),
-                                        );
-                                      },
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ExploreWorkoutPage()),
                                     );
                                   },
                                 );
@@ -268,7 +266,15 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                    const ProfileList(),
+                    ElevatedButton(
+          onPressed: () {
+            // Navigate to the ProfilePage when the button is pressed
+            Navigator.pushReplacement(context, MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ProfilePage()));
+          },
+          child: const Text('Visit my profile!'),
+        ),
                   ],
                 ),
               ),
