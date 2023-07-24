@@ -61,6 +61,7 @@ a. Users are able to keep track of their previous workouts.
 2\. Profile Page &#10004;
 
 a. Users are able to see their current fitness level and identity within this page
+
 **Software Engineering Principles**
 
 <h5>Project Management</h5>
@@ -147,3 +148,6 @@ The **technical proof** is as shown below
 <img src="assets/calendar.png" width="225" height="450">
 
 <img src="assets/workoutHistory.png" width="225" height="450">
+
+<img src="assets/profilepage.png" width="225" height="450">
+
