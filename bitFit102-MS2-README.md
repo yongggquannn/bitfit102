@@ -1,4 +1,4 @@
-<h1>NUS Orbital 2023 - Milestone 2</h1>
+<h1>NUS Orbital 2023 - Milestone 3</h1>
 
 **Proposed Level of Achievement:**
 
@@ -54,14 +54,13 @@ a. Insert **all** questions and answers into database
 
 Features to be completed by the mid of July:
 
-1\. Workout Log
+1\. Workout Log &#10004;
 
 a. Users are able to keep track of their previous workouts.
 
-2\. Profile Page
+2\. Profile Page &#10004;
 
 a. Users are able to see their current fitness level and identity within this page
-
 **Software Engineering Principles**
 
 <h5>Project Management</h5>

@@ -266,7 +266,6 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                    const ProfileList(),
                     ElevatedButton(
           onPressed: () {
             // Navigate to the ProfilePage when the button is pressed
